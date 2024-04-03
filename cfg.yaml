@@ -1,0 +1,29 @@
+file_handler:
+  uri: localhost
+  port: 9000
+  bucket: ocr-rag-bucket
+  tmp_dir: /tmp/ocr_rag/
+  allowed_types: ['application/pdf', 'image/tiff', 'image/png', 'image/jpeg']
+embedding_handler:
+  pinecone:
+    index_name: ocr-rag-index
+    pod_type: s1.x1
+    dimension: 1536
+    metric: cosine
+    model_name: text-embedding-3-small
+    top_k: 4
+  splitter:
+    chunk_size: 500
+    chunk_overlap: 100
+    separators:
+      - "\n\n"
+      - "\n"
+      - " "
+      - "."
+      - ","
+      - "\u200B"
+      - "\uff0c"
+      - "\u3001"
+      - "\uff0e"
+      - "\u3002"
+      - ""
