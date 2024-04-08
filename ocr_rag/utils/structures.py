@@ -1,25 +1,17 @@
-# from enum import Enum
+from typing import Any
 from pydantic import BaseModel
-
-
-# class ErrorCodes(Enum):
-#     NO_SESSION_FOUND = "NO_SESSION_FOUND", "No session found"
-#     NO_BOT_EXISTS = "NO_BOT_EXISTS", "No bot exists. Create a bot first."
-#     INVALID_BOT = "INVALID_BOT", "The bot is not valid. Create a valid bot."
-    
-#     def __init__(self, code, message):
-#         self.code = code
-#         self.message = message
+from datetime import datetime
 
 
 class UploadedFile(BaseModel):
-    path: str
+    uuid: str
+    name: str
+    filetype: str
+    path: str = None
+    date: datetime = None
 
 
-# class Prompt(BaseModel):
-#     user_input: str
-
-
-# class Snippet(BaseModel):
-#     index: int = -1
-#     code: str = ""
+class QueryResponse(BaseModel):
+    question: str
+    output_text: str
+    input_documents: list[dict[str, Any]] = None

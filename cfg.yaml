@@ -4,6 +4,9 @@ file_handler:
   bucket: ocr-rag-bucket
   tmp_dir: /tmp/ocr_rag/
   allowed_types: ['application/pdf', 'image/tiff', 'image/png', 'image/jpeg']
+  MINIO_ACCESS_KEY: admin
+  MINIO_SECRET_KEY: password
+  translation_model: gpt-3.5-turbo-0125
 embedding_handler:
   pinecone:
     index_name: ocr-rag-index
